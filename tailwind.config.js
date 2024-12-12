@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'Poppins': ['Poppins'],
-        'Roboto': ['Roboto'],
+        Poppins: ['Poppins'],
+        Roboto: ['Roboto', 'sans-serif'],
     
         },
+
     },
   },
   plugins: [],
