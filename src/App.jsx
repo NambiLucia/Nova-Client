@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Hero from './components/Hero';
 import Register from "./components/Register";
+import Home from "./components/Home"
 
 export default function App() {
 
@@ -8,7 +8,7 @@ export default function App() {
     <div>
       <Router>
         <Routes>
-        <Route exact path="/" element={<Hero />} />
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/register" element={<Register />} />
         </Routes>
       </Router>
