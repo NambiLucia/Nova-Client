@@ -1,7 +1,11 @@
 import NavBar from "./Nav";
 import Footer from "./Footer";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   fullname: "",
@@ -10,31 +14,56 @@ const initialValues = {
   role: "",
 };
 
-const onSubmit = (values) => {
-  console.log(values);
-};
+
 
 const validationSchema = Yup.object({
   fullname: Yup.string().required("Required!!!"),
   email: Yup.string()
     .email("Invalid email format")
     .required("Required"),
-  password: Yup.string().required("Required"),
+  password: Yup.string()
+  .min(3, 'Must be at least 3 characters long')
+  .required("Required"),
   role: Yup.string().required("Required"),
 });
 
 function Signup() {
+  const navigate = useNavigate();
+
+  const onSubmit = async(values,{setSubmitting,resetForm}) => {
+    try{
+     
+      const response =await axios.post("http://localhost:3000/api/v1/users/register",values);
+      console.log("Registration successful:", response.data);
+toast("Registration successful!Redirecting to login...")
+resetForm();
+navigate('/');
+
+
+
+    }
+    catch(error){
+      console.error('Error signing up:', error);
+      toast.error('Error signing up');
+    }
+    finally{
+      setSubmitting(false);
+    }
+};
+
+
+
   return (
     <>
     <NavBar />
-    <section className="flex justify-center items-center min-h-screen bg-gray-50">
+    <section className="flex justify-center items-center min-h-screen bg-[#f5f4f1]">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {() => (
-          <Form className="w-full max-w-md p-6 bg-white shadow-md rounded-lg">
+          <Form className="w-full max-w-md p-6 bg-[#f5f4f1] shadow-2xl rounded-lg">
             <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
               Sign Up
             </h2>
@@ -115,7 +144,7 @@ function Signup() {
             <div>
               <button
                 type="submit"
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="w-full bg-[#3F51B5] text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Register
               </button>
@@ -123,6 +152,7 @@ function Signup() {
           </Form>
         )}
       </Formik>
+      <ToastContainer />
     </section>
     <Footer />
     </>
