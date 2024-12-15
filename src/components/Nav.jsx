@@ -4,7 +4,7 @@ function NavBar() {
   return (
     <nav className="bg-gradient-to-r from-gray-400 to-gray-200 text-[#333333] shadow-md">
       <div className="container mx-auto px-8 lg:px-20 py-4 flex items-center justify-between">
-        {/* Logo Section */}
+        
         <div className="flex items-center space-x-2">
           {/* <img
             src="\public\undraw_online_transactions_-02-ka.svg"
@@ -24,16 +24,16 @@ function NavBar() {
           <a href="#about" className="hover:underline">
             About
           </a>
-          <a href="#dashboard" className="hover:underline">
+          <Link to="/display" className="hover:underline">
             Dashboard
-          </a>
+          </Link>
         </div>
 
        
         <div className="space-x-4 font-Roboto">
-          <button className="bg-[#f5f5f5] text-[#3F51B5] px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
+        <Link to="/login"> <button className="bg-[#f5f5f5] text-[#3F51B5] px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
             Login
-          </button>
+          </button></Link>
           <Link to="/register">
             <button className="bg-[#f5f5f5] text-[#3F51B5] px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
               Signup

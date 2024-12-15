@@ -6,9 +6,9 @@ function Hero() {
       <div className="container mx-auto px-8 lg:px-20 max-w-screen-xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left space-y-6 leading-loose">
           <h1 className="text-3xl md:text-5xl font-bold font-Roboto leading-relaxed tracking-wide">
-            <span className="text-[#3F51B5] italic">NOVA</span> Payment Manangement System
+            <span className="text-[#3F51B5] italic font-Bubblegum">NOVA</span> Payment Manangement System
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold font-Roboto italic text-[#3F51B5] tracking-wide">
+          <h2 className="text-2xl md:text-3xl font-semibold font-Bubblegum italic text-[#3F51B5] tracking-wide">
             Pay Anywhere, Anytime.
           </h2>
           <p className="text-lg md:text-xl font-Roboto tracking-wide">

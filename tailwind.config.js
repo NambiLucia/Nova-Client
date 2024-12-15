@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         Poppins: ['Poppins'],
         Roboto: ['Roboto', 'sans-serif'],
+        Bubblegum:['Bubblegum Sans','sans-serif']
     
         },
 
