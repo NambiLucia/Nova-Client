@@ -21,9 +21,9 @@ function NavBar() {
           <Link to="/" className="hover:underline">
             Home
           </Link>
-          <a href="#about" className="hover:underline">
+          <Link to="/content" className="hover:underline">
             About
-          </a>
+          </Link>
           <Link to="/display" className="hover:underline">
             Dashboard
           </Link>

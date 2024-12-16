@@ -4,6 +4,10 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Display from "./components/Page/Display";
+import AddPayment from "./components/Page/Addpayment";
+import Dashboard from "./components/Page/Dashboard";
+import Content from "./components/Content";
+
 
 export default function App() {
 
@@ -15,6 +19,9 @@ export default function App() {
         <Route exact path="/register" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/display" element={<Display />} />
+        <Route exact path="/addpayment" element={<AddPayment />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/content" element={<Content />} />
         </Routes>
       </Router>
     </div>
