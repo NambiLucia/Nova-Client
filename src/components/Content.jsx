@@ -1,9 +1,11 @@
 import Display from "./Page/Display";
+
 function Content() {
   return (
     <div>
-<Display />
-      
+     
+       <Display />
+    
     </div>
   )
 }

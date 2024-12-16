@@ -150,6 +150,8 @@ function Display() {
           
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+              component={Link}
+                to="/addpayment"
               
                 sx={[
                   {
@@ -199,6 +201,8 @@ function Display() {
 
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+              component={Link}
+                to="/viewpayment"
                 sx={[
                   {
                     minHeight: 48,

@@ -7,6 +7,7 @@ import Display from "./components/Page/Display";
 import AddPayment from "./components/Page/Addpayment";
 import Dashboard from "./components/Page/Dashboard";
 import Content from "./components/Content";
+import Viewpayment from "./components/Page/Viewpayment";
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route exact path="/addpayment" element={<AddPayment />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/content" element={<Content />} />
+        <Route exact path="/viewpayment" element={<Viewpayment />} />
         </Routes>
       </Router>
     </div>
