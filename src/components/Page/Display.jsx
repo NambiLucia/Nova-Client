@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  { useState, useEffect } from "react";
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -20,6 +20,7 @@ import AddCardTwoToneIcon from '@mui/icons-material/AddCardTwoTone';
 import GridViewTwoToneIcon from '@mui/icons-material/GridViewTwoTone';
 import SpaceDashboardTwoToneIcon from '@mui/icons-material/SpaceDashboardTwoTone';
 import {Link } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 
 
@@ -105,7 +106,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 function Display() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  //const [open, setOpen] = React.useState(true);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [open, setOpen] = useState(!isMobile); // Default closed on mobile
+
+
+  useEffect(() => {
+    // Automatically close the drawer when resizing to mobile
+    if (isMobile) setOpen(false);
+  }, [isMobile]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -118,7 +127,7 @@ function Display() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#3F51B5' }}>
         <Toolbar>
           <IconButton
             color="inherit"

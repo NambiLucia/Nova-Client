@@ -78,26 +78,26 @@ function AddPayment() {
 
   return (
     <>
-      <Box sx={{ display: "flex"}}>
+      <Box sx={{ display: "flex",justifyContent: "center",alignItems: "center",height: "100vh",}}>
         <Display />
-        <section className="flex justify-center items-center min-h-screen bg-gray-100 m-auto">
+        <section  className="flex flex-col justify-center items-center pt-20 p-4 min-h-screen m-auto">
   <Formik
     initialValues={initialValues}
     onSubmit={onSubmit}
     validationSchema={validationSchema}
   >
     {({ isSubmitting, setFieldValue }) => (
-      <Form className="w-full max-w-5xl p-6 bg-white shadow-lg rounded-lg">
-        <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
+      <Form className="w-full max-w-4xl p-4 md:p-6 bg-[#f5f5f5] shadow-lg rounded-lg mx-auto my-auto mr-20">
+        <h2 className="text-2xl font-semibold text-gray-700 text-center mb-4">
           Add Payment
         </h2>
 
-        {/* Horizontal Layout for Payment Details Section */}
-        <div className="grid grid-cols-3 gap-6 mb-6">
+        {/*  Payment Details Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
           <div>
             <label
               htmlFor="date"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium mb-1"
             >
               Date
             </label>
@@ -105,7 +105,7 @@ function AddPayment() {
               id="date"
               type="date"
               name="date"
-              className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             className="w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500"
             />
             <ErrorMessage
               name="date"
@@ -125,7 +125,7 @@ function AddPayment() {
               id="voucherno"
               type="number"
               name="voucherno"
-              className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+               className="w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500"
             />
             <ErrorMessage
               name="voucherno"
@@ -162,7 +162,7 @@ function AddPayment() {
         </div>
 
         {/* Horizontal Layout for Additional Details Section */}
-        <div className="grid grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
         <div>
             <label
               htmlFor="paymentDetails"
@@ -231,7 +231,16 @@ function AddPayment() {
             />
           </div>
 
-          <div>
+          
+        </div>
+
+
+ 
+
+        {/* Amount and Status Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
+
+        <div>
             <label
               htmlFor="budgetCode"
               className="block text-sm font-medium text-gray-700 mb-1"
@@ -251,10 +260,11 @@ function AddPayment() {
               className="text-red-500 text-sm"
             />
           </div>
-        </div>
 
-        {/* Horizontal Layout for Amount and Status Section */}
-        <div className="grid grid-cols-3 gap-6 mb-6">
+
+
+
+
           <div>
             <label
               htmlFor="exchangerate"
@@ -295,12 +305,17 @@ function AddPayment() {
             />
           </div>
 
-          <div>
+          
+        </div>
+
+        {/* Document Upload */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4" >
+        <div>
             <label
               htmlFor="amountInWords"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Amount in Figures
+              Amount in Words
             </label>
             <Field
               id="amountInWords"
@@ -314,10 +329,8 @@ function AddPayment() {
               className="text-red-500 text-sm"
             />
           </div>
-        </div>
 
-        {/* Document Upload */}
-        <div className="mb-6 grid grid-cols-3 gap-6" >
+
 
         <div>
             <label
@@ -353,7 +366,7 @@ function AddPayment() {
 
 
 
-
+<div>
 
           <label
             htmlFor="document"
@@ -375,13 +388,14 @@ function AddPayment() {
             component="div"
             className="text-red-500 text-sm"
           />
+          </div>
         </div>
 
         {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="w-full bg-[#3F51B5] text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Submitting..." : "Add Payment"}
