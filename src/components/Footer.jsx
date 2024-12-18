@@ -4,7 +4,7 @@ function Footer() {
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section: Logo */}
           <div className="text-center md:text-left mb-6 md:mb-0">
-            <h1 className="text-2xl font-bold">NOVA</h1>
+            <h1 className="text-4xl font-bold italic font-Bubblegum">NOVA</h1>
           </div>
   
           {/* Right Section: Links */}

@@ -18,9 +18,17 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import AddCardTwoToneIcon from '@mui/icons-material/AddCardTwoTone';
 import GridViewTwoToneIcon from '@mui/icons-material/GridViewTwoTone';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SpaceDashboardTwoToneIcon from '@mui/icons-material/SpaceDashboardTwoTone';
 import {Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+
+
+// Account imports
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 
@@ -110,6 +118,36 @@ function Display() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(!isMobile); // Default closed on mobile
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUserDetails = localStorage.getItem('userDetails');
+  
+    if (storedUserDetails) {
+    
+        // Parse the JSON string into an object
+        const userDetails = JSON.parse(storedUserDetails) 
+        setUser({ name: userDetails.name });
+    } else {
+      console.log('No user details found.');
+      setUser(null);
+    }
+  }, []);
+  
+
+
+
+
+  const [anchorEl, setAnchorEl] = useState(null); // Account menu state
+  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
+
+
+  const handleLogout = () => {
+    console.log("User logged out");
+    setUser(null); // Clear user session
+    // You can add redirect logic here (e.g., navigate('/login'))
+  }; 
 
   useEffect(() => {
     // Automatically close the drawer when resizing to mobile
@@ -128,7 +166,7 @@ function Display() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: '#3F51B5' }}>
-        <Toolbar>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -143,9 +181,56 @@ function Display() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-           NOVA
-          </Typography>
+          <Typography
+  variant="h6"
+  noWrap
+  component="div"
+  sx={{
+    fontFamily: 'Bubblegum',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: { xs: '1.5rem', sm: '2rem' }, 
+  }}
+>
+  NOVA
+</Typography>
+
+{user ? (
+  <Typography variant="h6">
+    Welcome, {user.name}!
+  </Typography>
+) : (
+  <Typography variant="h6">
+    Loading user data...
+  </Typography>
+)}
+
+<Typography
+  variant="body1"
+  sx={{
+    fontSize: { xs: '0.875rem', sm: '1rem' }, 
+  }}
+>
+  Your account is ready to manage payments.
+</Typography>
+
+          {/* Account*/}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton color="inherit" onClick={handleMenuOpen} sx={{ ml: 2 }}>
+            <Avatar sx={{ bgcolor: "secondary.main" }}>
+  {user?.name?.charAt(0) || "?"}
+</Avatar>
+
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+  <MenuItem disabled>{user ? user.name : "Guest"}</MenuItem>
+  <MenuItem onClick={handleLogout}>
+    <LogoutIcon fontSize="small" sx={{ mr: 1 }} />
+    Logout
+  </MenuItem>
+</Menu>
+
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -311,7 +396,61 @@ function Display() {
          
         </List>
  
-        
+        <Divider />
+        <ListItem disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+              component={Link}
+                to="/"
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: 'initial',
+                      }
+                    : {
+                        justifyContent: 'center',
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: 'auto',
+                        },
+                  ]}
+                >
+                  <HomeTwoToneIcon /> 
+                </ListItemIcon>
+                <ListItemText
+                 primary="Home"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+
+
+
+
+
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -341,8 +480,10 @@ function Display() {
             Use the navigation menu to access all features. If you need help,
             visit the `Help` section or contact support.
           </Typography>
-        </Typography> */}
+        </Typography> 
         
+        {/* <Typography variant="h6">Welcome, {user ? user.name : "Guest"}!</Typography>
+        <Typography variant="body1">Your account is ready to manage payments.</Typography> */}
       </Box>
     </Box>
   );

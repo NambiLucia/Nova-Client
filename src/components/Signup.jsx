@@ -7,6 +7,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
+
 const initialValues = {
   fullname: "",
   email: "",
@@ -35,10 +36,9 @@ function Signup() {
      
       const response =await axios.post("http://localhost:3000/api/v1/users/register",values);
       console.log("Registration successful:", response.data);
-toast("Registration successful!Redirecting to login...")
+      toast.success("Registration successful!Redirecting to login...")
 resetForm();
-navigate('/');
-
+setTimeout(()=>navigate('/login'),2000)
 
 
     }

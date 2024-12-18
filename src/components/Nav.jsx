@@ -11,7 +11,7 @@ function NavBar() {
             alt="Nova Logo"
             className="w-10 h-10 object-contain"
           /> */}
-          <span className="text-xl font-bold font-Roboto text-[#3F51B5]">
+          <span className="text-3xl font-bold italic font-Bubblegum text-[#3F51B5]">
             <Link to="/">Nova</Link>
           </span>
         </div>

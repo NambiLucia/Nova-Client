@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
+
 
 const initialValues = {
   email: "",
@@ -29,22 +31,32 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = async(values,{setSubmitting,resetForm}) => {
-    try{
-     
-      const response =await axios.post("http://localhost:3000/api/v1/users/login",values);
-      console.log("Login successful:", response.data);
-toast("Login successful!Redirecting to Dashboard...",values)
-resetForm();
-navigate('/');
+    try {
+      const response = await axios.post("http://localhost:3000/api/v1/users/login", values);
+  
+      // Extract the JWT from the server response
+      const { userToken } = response.data;
+  
+      // Decode the JWT to get user details (eg name, email, id)
+      const decodedUserToken = jwtDecode(userToken);
+  
+      // Log the decoded information to see what the token contains
+      console.log("Decoded User:", decodedUserToken);
+  
+      // Save the token in localStorage so the user stays logged in
+      localStorage.setItem('userToken', userToken);
 
-
-
-    }
-    catch(error){
-      console.error('Error Logging in:', error);
+      // Save the user details from the decoded token in localStorage
+      localStorage.setItem('userDetails', JSON.stringify(decodedUserToken));
+  
+      // Show success message and navigate
+      toast.success("Login successful! Redirecting to Dashboard...");
+      resetForm();
+      setTimeout(() => navigate('/dashboard'), 2000);
+    } catch (error) {
+      console.error('Error Logging in:', error.response?.data || error.message);
       toast.error('Error logging in');
-    }
-    finally{
+    } finally {
       setSubmitting(false);
     }
 };
@@ -82,7 +94,7 @@ navigate('/');
                 placeholder="Enter your email"
                 className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
-              <ErrorMessage name="email" />
+              <ErrorMessage name="email"/>
             </div>
             
             {/* Password */}
