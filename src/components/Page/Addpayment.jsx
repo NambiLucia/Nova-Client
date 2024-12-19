@@ -92,7 +92,7 @@ function AddPayment() {
           Add Payment
         </h2>
 
-        {/*  Payment Details Section */}
+        {/* Payment Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
           <div>
             <label
@@ -161,7 +161,7 @@ function AddPayment() {
 
         </div>
 
-        {/* Horizontal Layout for Additional Details Section */}
+        {/* Additional Details Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
         <div>
             <label
@@ -391,7 +391,7 @@ function AddPayment() {
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Button section*/}
         <div>
           <button
             type="submit"
