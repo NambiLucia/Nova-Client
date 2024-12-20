@@ -13,7 +13,7 @@ function Viewpayment() {
       setError("User token not found. Please log in.");
       return;
     }
-    
+
     let userId; 
 
 
@@ -100,7 +100,7 @@ function Viewpayment() {
                         {payment.payee}
                       </td>
                       <td className="py-2 px-4 text-sm text-gray-600 border-b">
-                        ${payment.amount.toFixed(2)}
+                        ${payment.amountFigures.toFixed(2)}
                       </td>
                       <td
                         className={`py-2 px-4 text-sm border-b ${
