@@ -117,7 +117,7 @@ function Addpayment() {
       if (response.ok) {
         toast.success("Payment successfully created!");
         console.log("Payment successfully created:", data);
-        
+
         setFormData(initialFormData); 
       } else {
         toast.error(data.message || "Failed to create payment.");
@@ -199,7 +199,7 @@ function Addpayment() {
                         </div>
                         <div>
                             <label htmlFor="document" className="block text-gray-700 font-medium mb-1">Attach Document (Max 5MB)</label>
-                            <input type="file" id="document" name="document" value={formData.document} onChange={handleFileChange} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png" />
+                            <input type="file" id="document" name="document"onChange={handleFileChange} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" accept=".pdf" />
                         </div>
                     </div>
 
