@@ -82,9 +82,13 @@ function Addpayment() {
       return;
     }
 
+ // Convert date to ISO-8601 format
+ const formattedDate = new Date(date).toISOString();
+
+
     // Prepare FormData
     const payload = new FormData();
-    payload.append("date", date);
+    payload.append("date", formattedDate);
     payload.append("voucherNo", voucherNo);
     payload.append("payee", payee);
     payload.append("paymentDetails", paymentDetails);
@@ -111,10 +115,11 @@ function Addpayment() {
         },
         body: payload,
       });
-
+   console.log(payload)
       const data = await response.json();
 
       if (response.ok) {
+     
         toast.success("Payment successfully created!");
         console.log("Payment successfully created:", data);
 
@@ -163,16 +168,48 @@ function Addpayment() {
                             <textarea id="paymentDetails" name="paymentDetails" value={formData.paymentDetails} onChange={handleChange}   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3"></textarea>
                         </div>
                          <div>
-                            <label htmlFor="accountCode" className="block text-gray-700 font-medium mb-1">Account Code</label>
-                            <input type="text" id="accountCode" name="accountCode" value={formData.accountCode} onChange={handleChange}  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                         <label htmlFor="accountCode" className="block text-gray-700 font-medium mb-1">Account code</label>
+                         <select
+  id="accountCode"
+  name="accountCode"
+  value={formData.accountCode}
+  onChange={handleChange}
+  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+>
+  <option value="">Select Account</option>
+  <option value="ACC-01">ACC-01</option>
+ 
+</select>
                         </div>
                         <div>
-                            <label htmlFor="beneficiaryCode" className="block text-gray-700 font-medium mb-1">Beneficiary Code</label>
-                            <input type="text" id="beneficiaryCode" name="beneficiaryCode" value={formData.beneficiaryCode} onChange={handleChange}  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                        <label htmlFor="beneficiaryCode" className="block text-gray-700 font-medium mb-1">Beneficiary code</label>
+                        <select
+  id="beneficiaryCode"
+  name="beneficiaryCode"
+  value={formData.beneficiaryCode}
+  onChange={handleChange}
+  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+>
+  <option value="">Select Beneficiary</option>
+  <option value="BEN-01">BEN-01</option>
+ 
+</select>
+
                         </div>
                          <div>
                             <label htmlFor="budgetCode" className="block text-gray-700 font-medium mb-1">Budget Code</label>
-                            <input type="text" id="budgetCode" name="budgetCode" value={formData.budgetCode} onChange={handleChange}  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                            
+                         <select
+  id="budgetCode"
+  name="budgetCode"
+  value={formData.budgetCode}
+  onChange={handleChange}
+  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+>
+  <option value="">Select Account</option>
+  <option value="BUD-01">BUD-01</option>
+ 
+</select>
                         </div>
                         <div>
                             <label htmlFor="exchangeRate" className="block text-gray-700 font-medium mb-1">Exchange Rate</label>
