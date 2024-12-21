@@ -8,6 +8,7 @@ import AddPayment from "./components/Page/Addpayment";
 import Dashboard from "./components/Page/Dashboard";
 import Content from "./components/Content";
 import Viewpayment from "./components/Page/Viewpayment";
+import Pdfview from "./components/Page/Pdfview";
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/content" element={<Content />} />
         <Route exact path="/viewpayment" element={<Viewpayment />} />
+        <Route exact path="/viewpdf" element={<Pdfview />} />
         </Routes>
       </Router>
     </div>

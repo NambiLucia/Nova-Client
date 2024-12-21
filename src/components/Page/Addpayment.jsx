@@ -145,7 +145,7 @@ function Addpayment() {
    <>
     <div className="bg-gray-100 min-h-screen p-4 md:p-8">
             <Display />
-            <div className="bg-white rounded-lg shadow-md p-6 md:p-8 w-full max-w-2xl mx-auto">
+            <div className="bg-white rounded-lg shadow-md p-20 md:p-8 w-full max-w-2xl m-auto">
                 <h2 className="text-2xl font-semibold mb-4 text-center">Add Payment</h2>
                 <form  onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
