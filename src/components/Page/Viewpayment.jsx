@@ -3,7 +3,7 @@ import Display from "./Display";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Pdfview from "./Pdfview";
+
 
 function Viewpayment() {
   const [list, setList] = useState([]);
@@ -112,7 +112,7 @@ function Viewpayment() {
                   {payment.status}
                 </td>
                 <td className="py-2 px-4 text-sm text-blue-600 border-b">
-                <Link to='/viewpdf'> <button onClick={Pdfview} className="text-blue-500 hover:underline">
+                <Link to='/viewpdf'> <button className="text-blue-500 hover:underline">
                     View PDF
                   </button></Link> 
                 </td>

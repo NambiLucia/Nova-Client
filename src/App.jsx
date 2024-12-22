@@ -10,7 +10,7 @@ import Content from "./components/Content";
 import Viewpayment from "./components/Page/Viewpayment";
 import Pdfview from "./components/Page/Pdfview";
 
-import { PDFViewer } from '@react-pdf/renderer';
+
 
 
 export default function App() {
