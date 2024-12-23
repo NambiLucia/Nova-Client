@@ -1,11 +1,9 @@
-import { StyleSheet} from '@react-pdf/renderer';
-
+import { StyleSheet } from '@react-pdf/renderer';
 
 export const styles = StyleSheet.create({
   page: {
     padding: 30,
     backgroundColor: '#f9f9f9',
-    //fontFamily: 'Helevetica',
   },
   header: {
     marginBottom: 20,
@@ -16,50 +14,39 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#333333',
-    marginBottom: 5,
+    textAlign: 'center',
   },
-  detailSection: {
+  detailsContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent:'center',
-    flexWrap: 'wrap',
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: '#ffffff',
-    border: '1px solid #dddddd',
-    borderRadius: 5,
+    justifyContent: 'space-between',
+    
   },
-  detailSectiona: {
+  column: {
+    width: '45%',
+  },
+  detailItem: {
+    marginBottom:40,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent:'space-evenly',
-    flexWrap: 'wrap',
-    marginTop: 10,
-    marginLeft:20,
-    padding: 10,
-    backgroundColor: '#ffffff',
-    border: '1px solid #dddddd',
-    borderRadius: 5,
-  },
-  detailBlock: {
-    width: '50%', // Half width for side-by-side layout
-    padding: 5,
+    justifyContent: 'space-between',
   },
   label: {
     fontSize: 12,
     fontWeight: 'bold',
     color: '#555555',
+    width: '50%',
   },
   value: {
     fontSize: 12,
     color: '#333333',
-    marginBottom: 5,
+    width: '50%',
+    textAlign: 'right',
   },
   footer: {
-    marginTop: 20,
+    marginTop: 40,
     fontSize: 10,
     textAlign: 'center',
     color: '#777777',
   },
 });
-
