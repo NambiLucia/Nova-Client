@@ -112,7 +112,7 @@ function Viewpayment() {
                   {payment.status}
                 </td>
                 <td className="py-2 px-4 text-sm text-blue-600 border-b">
-                <Link to='/viewpdf'> <button className="text-blue-500 hover:underline">
+                <Link to={`/viewpdf/${payment.id}`}> <button className="text-blue-500 hover:underline">
                     View PDF
                   </button></Link> 
                 </td>
