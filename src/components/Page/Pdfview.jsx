@@ -18,8 +18,7 @@ function Pdfview() {
           `http://localhost:3000/api/v1/payments/single-payment/${paymentId}`
         );
         
-        console.log('Response status:', response.status); // Debugging: log the response status
-        
+        console.log('Response status:', response.status); 
         if (!response.ok) {
           throw new Error('Failed to fetch payment details');
         }
@@ -119,7 +118,7 @@ function Pdfview() {
         </View>
         <View style={styles.detailItem}>
           <Text style={styles.label}>Document Attached:</Text>
-          <Text style={styles.value}>{paymentView.documentAttached}</Text>
+          <Text style={styles.value}>{paymentView.Document[0].filename}</Text>
         </View>
 
         <View style={styles.footer}>

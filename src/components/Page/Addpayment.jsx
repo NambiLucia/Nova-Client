@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Display from "./Display"
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import { useRef } from "react";
 
 function Addpayment() {
+  const fileInputRef = useRef(null); // Add a reference for the file input
   const initialFormData = {
     date: "",
     voucherNo: "",
@@ -124,6 +126,9 @@ function Addpayment() {
         console.log("Payment successfully created:", data);
 
         setFormData(initialFormData); 
+        if (fileInputRef.current) {
+          fileInputRef.current.value = ""; // Clear the file input
+        }
       } else {
         toast.error(data.message || "Failed to create payment.");
         console.error("Error response:", data);
@@ -143,6 +148,7 @@ function Addpayment() {
 
   return (
    <>
+    <ToastContainer />
     <div className="bg-gray-100 min-h-screen p-4 md:p-8">
             <Display />
             <div className="bg-white rounded-lg shadow-md p-20 md:p-8 w-full max-w-2xl m-auto">
@@ -160,8 +166,9 @@ function Addpayment() {
                         </div>
                         <div>
                             <label htmlFor="payee" className="block text-gray-700 font-medium mb-1">Payee</label>
-                            <input type="text" id="payee" name="payee" 
-                            value={formData.payee} onChange={handleChange} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+
+
+                            <textarea id="payee" name="payee" value={formData.payee} onChange={handleChange}   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3"></textarea>
                         </div>
                         <div>
                             <label htmlFor="paymentDetails" className="block text-gray-700 font-medium mb-1">Payment Details</label>

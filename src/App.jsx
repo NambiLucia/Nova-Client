@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 //import Register from "./components/Register";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <div>
+       <ToastContainer />
       <Router>
         <Routes>
         <Route exact path="/" element={<Home />} />
