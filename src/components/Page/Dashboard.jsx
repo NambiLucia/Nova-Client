@@ -1,34 +1,99 @@
+import { useState, useEffect } from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import Display from "../Page/Display";
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
- function Dashboard() {
+
+// Colors for the PieChart
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const RADIAN = Math.PI / 180;
+
+// Customized Label for PieChart
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
   return (
-  <>
-  <Box sx={{display:'flex'}}>
-    <Display />
-    <Box component="main" sx={{flexGrow:1,p:3,marginTop:"55px"}}>
-      <Typography variant="h4">
-        Welcome to the Dashboard
-      </Typography>
-    </Box>
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
+function Dashboard() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch data from the backend API
+  useEffect(() => {
+    const fetchPaymentData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/v1/payments/payment-status"); 
+        if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.statusText}`);
+        }
+        const paymentStatus = await response.json();
 
+        // Format the data for the PieChart
+        const formattedData = paymentStatus.map((item) => ({
+          name: item.status,
+          value: item.count,
+        }));
 
+        setData(formattedData);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
 
+    fetchPaymentData();
+  }, []);
 
-  </Box>
-  
-  
-  
-  
-  
-  </>
+  if (loading) return <div className="text-center">Loading...</div>;
+  if (error) return <div className="text-center text-red-500">Error: {error}</div>;
 
-   
-  
+  return (
+    <div className="bg-gray-100 min-h-screen p-6">
+      {/* Display Section */}
+      <Display />
 
+      {/* Payment Status Section */}
+      <div className="bg-white p-6 rounded-lg shadow-md mt-8">
+        <h1 className="text-2xl font-semibold mb-4 text-center">Payment Status</h1>
 
-  )
+        {/* Pie Chart Section */}
+        <div className="w-full h-96">
+          <ResponsiveContainer>
+            <PieChart>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={renderCustomizedLabel}
+                outerRadius={150}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  );
 }
+
 export default Dashboard;
