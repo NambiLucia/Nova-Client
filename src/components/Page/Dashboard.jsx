@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import Alerts from "./Alerts";
 import Display from "../Page/Display";
 
 // Colors for the PieChart
@@ -27,6 +28,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 function Dashboard() {
   const [data, setData] = useState([]);
+  const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -34,7 +36,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchPaymentData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/payments/payment-status"); 
+        const response = await fetch("http://localhost:3000/api/v1/payments/payment-status");
         if (!response.ok) {
           throw new Error(`Error fetching data: ${response.statusText}`);
         }
@@ -47,6 +49,7 @@ function Dashboard() {
         }));
 
         setData(formattedData);
+        setPayments(paymentStatus); // Store raw payment data for Alerts
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -62,15 +65,14 @@ function Dashboard() {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      {/* Display Section */}
       <Display />
 
       {/* Payment Status Section */}
-      <div className="bg-white p-6 rounded-lg shadow-md mt-8">
+      <div className="bg-gray-200 p-6 rounded-lg shadow-md">
         <h1 className="text-2xl font-semibold mb-4 text-center">Payment Status</h1>
 
         {/* Pie Chart Section */}
-        <div className="w-full h-96">
+        <div className="min-w-full h-80">
           <ResponsiveContainer>
             <PieChart>
               <Pie
@@ -91,6 +93,12 @@ function Dashboard() {
             </PieChart>
           </ResponsiveContainer>
         </div>
+      </div>
+
+      {/* Alerts Section */}
+      <div className="bg-white p-6 rounded-lg shadow-md mt-8 m-auto">
+        <h1 className="text-2xl font-bold text-center mb-4">Alerts</h1>
+        <Alerts payments={payments} />
       </div>
     </div>
   );
