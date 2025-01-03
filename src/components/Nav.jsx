@@ -21,11 +21,11 @@ function NavBar() {
           <Link to="/" className="hover:underline">
             Home
           </Link>
-          <Link to="/content" className="hover:underline">
+          <Link to="/about" className="hover:underline">
             About
           </Link>
           <Link to="/display" className="hover:underline">
-            Dashboard
+            Guide
           </Link>
         </div>
 
@@ -51,7 +51,7 @@ function NavBar() {
           About
         </a>
         <a href="#dashboard" className="block py-2 hover:underline">
-          Dashboard
+          Guide
         </a>
       </div>
     </nav>
