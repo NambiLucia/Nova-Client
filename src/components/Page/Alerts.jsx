@@ -1,14 +1,13 @@
 import { PieChart, Pie, ResponsiveContainer, Tooltip } from "recharts";
-import { useState, useEffect } from "react"; // Import useState and useEffect for API calls
+import { useState, useEffect } from "react"; 
 
 const COLORS = ["#0088FE", "#00C49F"];
 
 function Alerts() {
-  // State to store the number of initiated and approved payments
+  
   const [initiatedCount, setInitiatedCount] = useState(0);
   const [approvedCount, setApprovedCount] = useState(0);
 
-  // Fetch payment status data from the API
   useEffect(() => {
     const fetchPaymentStatus = async () => {
       try {
@@ -28,7 +27,7 @@ function Alerts() {
     };
 
     fetchPaymentStatus();
-  }, []); // Run only once when the component mounts
+  }, []); 
 
   // Data for charts
   const initiatedData = [{ name: "Initiated", value: initiatedCount }];
@@ -36,7 +35,7 @@ function Alerts() {
 
   return (
     <div className="bg-gray-200 p-4 flex flex-col md:flex-row gap-8 justify-center items-center">
-      {/* Initiated Payments Card */}
+      {/* Initiated Card */}
       <div className="bg-blue-50 p-4 rounded-lg shadow-md text-center">
         <h2 className="text-md font-semibold text-blue-700">Initiated Payments</h2>
         <p className="text-xl font-bold">{initiatedCount}</p>
@@ -59,7 +58,7 @@ function Alerts() {
         </div>
       </div>
 
-      {/* Approved Payments Card */}
+      {/* Approved Card */}
       <div className="bg-green-50 p-4 rounded-lg shadow-md text-center">
         <h2 className="text-md font-semibold text-green-700">Approved Payments</h2>
         <p className="text-xl font-bold">{approvedCount}</p>

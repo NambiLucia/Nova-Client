@@ -21,6 +21,7 @@ import GridViewTwoToneIcon from '@mui/icons-material/GridViewTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SpaceDashboardTwoToneIcon from '@mui/icons-material/SpaceDashboardTwoTone';
 import {Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import { useMediaQuery } from "@mui/material";
 
 
@@ -113,6 +114,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 function Display() {
+  const navigate = useNavigate();
   const theme = useTheme();
   //const [open, setOpen] = React.useState(true);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -146,6 +148,7 @@ function Display() {
   const handleLogout = () => {
     console.log("User logged out");
     setUser(null); // Clear user session
+    navigate('/login');
     // You can add redirect logic here (e.g., navigate('/login'))
   }; 
 

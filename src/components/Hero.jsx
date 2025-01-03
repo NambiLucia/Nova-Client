@@ -1,4 +1,5 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -16,10 +17,10 @@ function Hero() {
           </p>
 
           <div className="flex justify-center items-center">
-            <button className="flex items-center font-Roboto font-semibold text-[#3F51B5] leading-9 mt-4">
+           <Link to="/login"> <button className="flex items-center font-Roboto font-semibold text-[#3F51B5] leading-9 mt-4">
               GET STARTED
               <FaArrowRightLong className="ml-2" />
-            </button>
+            </button> </Link>
           </div>
         </div>
 

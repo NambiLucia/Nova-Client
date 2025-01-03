@@ -40,19 +40,17 @@ function Login() {
       // Decode the JWT to get user details (eg name, email, id)
       const decodedUserToken = jwtDecode(userToken);
   
-      // Log the decoded information to see what the token contains
       console.log("Decoded User:", decodedUserToken);
   
-      // Save the token in localStorage so the user stays logged in
       localStorage.setItem('userToken', userToken);
 
       // Save the user details from the decoded token in localStorage
       localStorage.setItem('userDetails', JSON.stringify(decodedUserToken));
   
-      // Show success message and navigate
+     
       toast.success("Login successful! Redirecting to Dashboard...");
       resetForm();
-      setTimeout(() => navigate('/dashboard'), 2000);
+      setTimeout(() => navigate('/addpayment'), 1000);
     } catch (error) {
       console.error('Error Logging in:', error.response?.data || error.message);
       toast.error('Error logging in');
