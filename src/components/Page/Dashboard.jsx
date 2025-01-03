@@ -68,8 +68,9 @@ function Dashboard() {
       <Display />
 
       {/* Payment Status Section */}
+      <h1 className="text-2xl font-semibold mb-4 text-center">Payment Status</h1>
       <div className="bg-gray-200 p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl font-semibold mb-4 text-center">Payment Status</h1>
+        
 
         {/* Pie Chart Section */}
         <div className="min-w-full h-80">
