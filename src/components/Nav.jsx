@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 function NavBar() {
   return (
     <nav className="bg-gradient-to-r from-gray-400 to-gray-200 text-[#333333] shadow-md">
@@ -24,7 +25,7 @@ function NavBar() {
           <Link to="/about" className="hover:underline">
             About
           </Link>
-          <Link to="/display" className="hover:underline">
+          <Link to="/guide" className="hover:underline">
             Guide
           </Link>
         </div>
@@ -44,15 +45,15 @@ function NavBar() {
 
       {/* Mobile Navigation Links */}
       <div className="md:hidden bg-gradient-to-r from-gray-400 to-gray-200 text-center py-2 font-Roboto">
-        <a href="/" className="block py-2 hover:underline">
+        <Link to="/" className="block py-2 hover:underline">
           Home
-        </a>
-        <a href="#about" className="block py-2 hover:underline">
+        </Link>
+        <Link to="/about" className="block py-2 hover:underline">
           About
-        </a>
-        <a href="#dashboard" className="block py-2 hover:underline">
+        </Link>
+        <Link to="/guide" className="block py-2 hover:underline">
           Guide
-        </a>
+        </Link>
       </div>
     </nav>
   );

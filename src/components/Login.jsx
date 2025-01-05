@@ -64,14 +64,14 @@ function Login() {
   return (
     <>
     <NavBar />
-    <section className="flex justify-center items-center min-h-screen bg-[#f5f4f1]">
+    <section className="flex justify-center items-center m-20">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {() => (
-          <Form className="w-full max-w-md p-6 bg-[#f5f4f1] shadow-2xl rounded-lg">
+          <Form className="w-full max-w-md p-6 bg-gray-200 shadow-2xl rounded-lg">
             <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
              Login
             </h2>

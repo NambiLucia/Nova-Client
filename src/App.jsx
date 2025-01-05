@@ -11,6 +11,7 @@ import Content from "./components/Content";
 import Viewpayment from "./components/Page/Viewpayment";
 import Pdfview from "./components/Page/Pdfview";
 import About from "./components/About";
+import Guide from "./components/Guide";
 
 
 
@@ -32,6 +33,7 @@ export default function App() {
         <Route exact path="/viewpayment" element={<Viewpayment />} />
         <Route exact path="/viewpdf/:paymentId" element={<Pdfview />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/guide" element={<Guide />} />
         </Routes>
       </Router>
     </div>
