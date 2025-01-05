@@ -20,10 +20,10 @@ const initialValues = {
 const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email format")
-    .required("Required"),
+    .required("Email is Required"),
   password: Yup.string()
   .min(3, 'Must be at least 3 characters long')
-  .required("Required")
+  .required("Password is Required")
  
 });
 
@@ -92,7 +92,7 @@ function Login() {
                 placeholder="Enter your email"
                 className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
-              <ErrorMessage name="email"/>
+              <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
             </div>
             
             {/* Password */}
@@ -110,7 +110,7 @@ function Login() {
                 placeholder="Enter your password"
                 className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
-              <ErrorMessage name="password" />
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
             </div>
 
            
