@@ -56,14 +56,14 @@ setTimeout(()=>navigate('/login'),2000)
   return (
     <>
     <NavBar />
-    <section className="flex justify-center items-center min-h-screen bg-[#f5f4f1]">
+    <section className="flex justify-center items-center m-20">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         {() => (
-          <Form className="w-full max-w-md p-6 bg-[#f5f4f1] shadow-2xl rounded-lg">
+          <Form className="w-full max-w-md p-6 bg-gray-200 shadow-2xl rounded-lg">
             <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
               Sign Up
             </h2>
@@ -71,7 +71,7 @@ setTimeout(()=>navigate('/login'),2000)
             <div>
               <label
                 htmlFor="fullname"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Fullname
               </label>
@@ -88,7 +88,7 @@ setTimeout(()=>navigate('/login'),2000)
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-2 mt-2"
               >
                 Email
               </label>
@@ -105,7 +105,7 @@ setTimeout(()=>navigate('/login'),2000)
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-2 mt-2"
               >
                 Password
               </label>
@@ -122,7 +122,7 @@ setTimeout(()=>navigate('/login'),2000)
             <div>
               <label
                 htmlFor="role"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 mb-2 mt-2"
               >
                 Role
               </label>
@@ -144,7 +144,7 @@ setTimeout(()=>navigate('/login'),2000)
             <div>
               <button
                 type="submit"
-                className="w-full bg-[#3F51B5] text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="w-full bg-[#3F51B5] text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-2 mt-4"
               >
                 Register
               </button>

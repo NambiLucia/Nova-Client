@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 function Footer() {
     return (
       <footer className="bg-[#333333] text-white py-8">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section: Logo */}
           <div className="text-center md:text-left mb-6 md:mb-0">
-            <h1 className="text-4xl font-bold italic font-Bubblegum">NOVA</h1>
+          <Link to="/">  <h1 className="text-4xl font-bold italic font-Bubblegum">NOVA</h1> </Link>
           </div>
   
           {/* Right Section: Links */}
@@ -12,7 +13,7 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-2">Support</h3>
             <ul>
               <li>
-                <a href="#guide" className="hover:underline">Guide</a>
+                <Link to="/guide" className="hover:underline">Guide</Link>
               </li>
             </ul>
           </div>
@@ -22,13 +23,13 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-2">Company</h3>
             <ul>
               <li>
-                <a href="/" className="hover:underline">Home</a>
+                <Link to="/" className="hover:underline">Home</Link>
               </li>
               <li>
-                <a href="#about" className="hover:underline">About</a>
+                <Link to="/about" className="hover:underline">About</Link>
               </li>
               <li>
-                <a href="#dashboard" className="hover:underline">Login</a>
+                <Link to="/login" className="hover:underline">Login</Link>
               </li>
             </ul>
           </div>
