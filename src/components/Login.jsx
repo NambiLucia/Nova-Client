@@ -43,6 +43,7 @@ function Login() {
       console.log("Decoded User:", decodedUserToken);
   
       localStorage.setItem('userToken', userToken);
+      console.log("userToken:",userToken)
 
       // Save the user details from the decoded token in localStorage
       localStorage.setItem('userDetails', JSON.stringify(decodedUserToken));

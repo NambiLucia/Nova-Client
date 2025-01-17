@@ -1,5 +1,6 @@
 import { PieChart, Pie, ResponsiveContainer, Tooltip } from "recharts";
 import { useState, useEffect } from "react"; 
+import {jwtDecode} from "jwt-decode";
 
 const COLORS = ["#0088FE", "#00C49F"];
 
@@ -7,12 +8,44 @@ function Alerts() {
   
   const [initiatedCount, setInitiatedCount] = useState(0);
   const [approvedCount, setApprovedCount] = useState(0);
+ //const [error, setError] = useState(null);
 
   useEffect(() => {
+    
     const fetchPaymentStatus = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/payments/payment-status");
+        const token = localStorage.getItem("userToken"); 
+        console.log("Token from localStorage:", token);
+        if (!token) {
+          throw new Error("Authentication token missing. Cannot fetch data.");
+        }
+
+        let userId; 
+        try {
+          const decoded = jwtDecode(token);
+          userId = decoded.id;
+      
+          if (!userId) throw new Error("Invalid token structure.");
+        } catch (error) {
+          console.log("Invalid token. Please log in again.");
+          console.error(error.message);
+          return;
+        }
+
+
+        const response = await fetch(`http://localhost:3000/api/v1/payments/payment-status/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Include the token in the request headers
+            },
+          }
+
+
+
+
+        );
         const data = await response.json();
+        console.log("Fetched data:", data);
         
         // Map through the data and get the count for each status
         const initiatedData = data.find(payment => payment.status === "INITIATED");
@@ -22,7 +55,7 @@ function Alerts() {
         setInitiatedCount(initiatedData ? initiatedData.count : 0);
         setApprovedCount(approvedData ? approvedData.count : 0);
       } catch (error) {
-        console.error("Error fetching payment status data:", error);
+        console.log("Error fetching payment status data:", error);
       }
     };
 
