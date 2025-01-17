@@ -45,7 +45,7 @@ function Footer() {
             <a href="#youtube" className="hover:text-gray-400">YouTube</a>
           </div >
           <p className="text-sm text-[gray-500]">
-            © 2024 Created by Lucia. All rights reserved.
+            © 2024 Nova Payment Management System. All rights reserved.
           </p>
         </div>
       </footer>
