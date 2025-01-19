@@ -5,7 +5,7 @@ import Display from "../Page/Display";
 import {jwtDecode} from "jwt-decode";
 
 // Colors for the PieChart
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#0088FE", "#00C49F"];
 const RADIAN = Math.PI / 180;
 
 // Customized Label for PieChart
@@ -33,32 +33,30 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
- 
   useEffect(() => {
     const fetchPaymentData = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem("userToken"); // Get the token from local storage
+        const token = localStorage.getItem("userToken");
         if (!token) {
           throw new Error("Authentication token missing. Cannot fetch data.");
         }
 
-        let userId; 
-
+        let userId;
         try {
-              const decoded = jwtDecode(token);
-              userId = decoded.id;
-          
-              if (!userId) throw new Error("Invalid token structure.");
-            } catch (err) {
-              setError("Invalid token. Please log in again.");
-              console.error(err);
-              return;
-            }
+          const decoded = jwtDecode(token);
+          userId = decoded.id;
+
+          if (!userId) throw new Error("Invalid token structure.");
+        } catch (err) {
+          setError("Invalid token. Please log in again.");
+          console.error(err);
+          return;
+        }
 
         const response = await fetch(`http://localhost:3000/api/v1/payments/payment-status/${userId}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the request headers
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -72,26 +70,27 @@ function Dashboard() {
 
         const paymentStatus = await response.json();
 
-        // Format the data for the PieChart
-        const formattedData = paymentStatus.map((item) => ({
-          name: item.status,
-          value: item.count,
-        }));
+        // Filter and format the data for the PieChart
+        const filteredData = paymentStatus
+          .filter((item) => item.status === "INITIATED" || item.status === "APPROVED")
+          .map((item) => ({
+            name: item.status,
+            value: item.count,
+          }));
 
-        setData(formattedData);
-        setPayments(paymentStatus); // Store raw payment data for Alerts
+        setData(filteredData);
+        setPayments(filteredData); 
       } catch (error) {
         setError(error.message);
 
-        // If unauthorized, set fallback data for the charts
+        // If unauthorized, fallback data for the charts
         if (error.message.includes("Unauthorized")) {
           const fallbackData = [
             { name: "INITIATED", value: 0 },
             { name: "APPROVED", value: 0 },
-            { name: "REJECTED", value: 0 },
           ];
           setData(fallbackData);
-          setPayments([]); // Clear payments data
+          setPayments([]);
         }
       } finally {
         setLoading(false);
@@ -109,7 +108,7 @@ function Dashboard() {
 
       {/* Payment Status Section */}
       <h1 className="text-2xl font-semibold mb-4 text-center">Payment Status</h1>
-      <div className="bg-gray-200 p-6 rounded-lg shadow-md">
+      <div className="bg-gray-200 p-6 w-full rounded-lg shadow-md">
         {error && !error.includes("Unauthorized") ? (
           <div className="text-center text-red-500">Error: {error}</div>
         ) : (
