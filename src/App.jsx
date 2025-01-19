@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Display from "./components/Page/Display";
 import AddPayment from "./components/Page/Addpayment";
 import Dashboard from "./components/Page/Dashboard";
+import Approve from "./components/Page/Approve";
 import Content from "./components/Content";
 import Viewpayment from "./components/Page/Viewpayment";
 import Pdfview from "./components/Page/Pdfview";
@@ -34,6 +35,7 @@ export default function App() {
         <Route exact path="/viewpdf/:paymentId" element={<Pdfview />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/guide" element={<Guide />} />
+        <Route exact path="/approve" element={<Approve />} />
         </Routes>
       </Router>
     </div>
