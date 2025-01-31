@@ -28,7 +28,7 @@ function Approve() {
       
           const data = await response.json();
           console.log("Fetched payments:", data); // Log the data for debugging
-          setPayments(data);
+          setPayments(data.payments);
         } catch (err) {
           setError(err.message);
         } finally {
@@ -48,7 +48,7 @@ function Approve() {
         throw new Error("Authentication token missing. Please log in.");
       }
 
-      const response = await fetch(`http://localhost:3000/api/v1/payments/${paymentId}/approve`, {
+      const response = await fetch(`http://localhost:3000/api/v1/payments/approve-payment/${paymentId}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
