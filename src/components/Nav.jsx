@@ -1,60 +1,61 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="bg-gradient-to-r from-gray-400 to-gray-200 text-[#333333] shadow-md">
+    <nav className="bg-[#333333] text-[#f5f5f5] shadow-md">
       <div className="container mx-auto px-8 lg:px-20 py-4 flex items-center justify-between">
         
+        {/* Logo */}
         <div className="flex items-center space-x-2">
-          {/* <img
-            src="\public\undraw_online_transactions_-02-ka.svg"
-            alt="Nova Logo"
-            className="w-10 h-10 object-contain"
-          /> */}
           <span className="text-3xl font-bold italic font-Bubblegum text-[#3F51B5]">
             <Link to="/">Nova</Link>
           </span>
         </div>
 
-       
+        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 text-lg font-Roboto">
-          <Link to="/" className="hover:underline">
-            Home
-          </Link>
-          <Link to="/about" className="hover:underline">
-            About
-          </Link>
-          <Link to="/guide" className="hover:underline">
-            Guide
-          </Link>
+          <Link to="/" className="hover:underline text-[#f5f5f5]">Home</Link>
+          <Link to="/about" className="hover:underline text-[#f5f5f5]">About</Link>
+          <Link to="/guide" className="hover:underline text-[#f5f5f5]">Guide</Link>
         </div>
 
-       
-        <div className="space-x-4 font-Roboto">
-        <Link to="/login"> <button className="bg-[#f5f5f5] text-[#3F51B5] px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
-            Login
-          </button></Link>
-          <Link to="/register">
-            <button className="bg-[#f5f5f5] text-[#3F51B5] px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
-              Signup
+        {/* Login Button */}
+        <div className="hidden md:flex space-x-4 font-Roboto">
+          <Link to="/login">
+            <button className="bg-[#3F51B5] text-[#f5f5f5] px-4 py-2 rounded-md font-semibold hover:bg-[#303F9F]">
+              Login
             </button>
           </Link>
         </div>
+
+        {/* Mobile Hamburger Menu Button */}
+        <button
+          className="md:hidden text-3xl focus:outline-none text-[#f5f5f5]"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
 
-      {/* Mobile Navigation Links */}
-      <div className="md:hidden bg-gradient-to-r from-gray-400 to-gray-200 text-center py-2 font-Roboto">
-        <Link to="/" className="block py-2 hover:underline">
-          Home
-        </Link>
-        <Link to="/about" className="block py-2 hover:underline">
-          About
-        </Link>
-        <Link to="/guide" className="block py-2 hover:underline">
-          Guide
-        </Link>
-      </div>
+      {/* Mobile Navigation Menu */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-[#333333] text-center py-4 space-y-4 font-Roboto"
+        >
+          <Link to="/" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Home</Link>
+          <Link to="/about" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>About</Link>
+          <Link to="/guide" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Guide</Link>
+          <Link to="/login" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Login</Link>
+        </motion.div>
+      )}
     </nav>
   );
 }
