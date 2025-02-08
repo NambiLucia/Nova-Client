@@ -13,6 +13,7 @@ import Viewpayment from "./components/Page/Viewpayment";
 import Pdfview from "./components/Page/Pdfview";
 import About from "./components/About";
 import Guide from "./components/Guide";
+import ForgotPassword from "./components/ForgotPassword";
 
 
 
@@ -36,6 +37,7 @@ export default function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/guide" element={<Guide />} />
         <Route exact path="/approve" element={<Approve />} />
+        <Route exact path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </Router>
     </div>
