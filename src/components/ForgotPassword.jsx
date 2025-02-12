@@ -19,18 +19,29 @@ const validationSchema = Yup.object({
 
 function ForgotPassword() {
   const navigate = useNavigate();
+  
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
+    
     try {
       const response = await axios.post("http://localhost:3000/api/v1/users/forgot-password", values);
-      toast.success(response.data.message || "Reset link sent to email");
-      const token = response.data.token; // Assuming the backend returns a token
-      localStorage.setItem("resetToken", token); // Store the token
+
+      console.log("Response:", response); 
+
+      toast.success("Reset link sent to email");
+
+      console.log("Success toast should be displayed now");
+      const token = response.data.token; 
+      localStorage.setItem("resetToken", token); 
       resetForm();
-      navigate("/login")
+
+      
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); 
 
     } catch (error) {
-      console.error("Error:", error.message);
-      toast.error("Failed to send reset link");
+      console.error("Error:", error.response?.data || error.message); 
+      toast.error(error.response?.data?.message || "Failed to send reset link");
     } finally {
       setSubmitting(false);
     }
@@ -39,13 +50,13 @@ function ForgotPassword() {
   return (
     <>
       <NavBar />
+
+      <ToastContainer />
       <section className="flex justify-center items-center min-h-screen bg-[#F3F4F6] p-6">
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           {() => (
             <Form className="w-full max-w-md p-6 bg-white shadow-2xl rounded-lg">
               <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">Forgot Password</h2>
-
-              {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <Field
@@ -57,8 +68,6 @@ function ForgotPassword() {
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
               </div>
-
-              {/* Submit Button */}
               <div className="mt-6">
                 <button
                   type="submit"
