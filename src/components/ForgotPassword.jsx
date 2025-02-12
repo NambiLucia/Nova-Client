@@ -23,11 +23,13 @@ function ForgotPassword() {
     try {
       const response = await axios.post("http://localhost:3000/api/v1/users/forgot-password", values);
       toast.success(response.data.message || "Reset link sent to email");
+      const token = response.data.token; // Assuming the backend returns a token
+      localStorage.setItem("resetToken", token); // Store the token
       resetForm();
       navigate("/login")
 
     } catch (error) {
-      console.error("Error:", error.response?.data || error.message);
+      console.error("Error:", error.message);
       toast.error("Failed to send reset link");
     } finally {
       setSubmitting(false);

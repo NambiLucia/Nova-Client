@@ -14,6 +14,7 @@ import Pdfview from "./components/Page/Pdfview";
 import About from "./components/About";
 import Guide from "./components/Guide";
 import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 
 
 
@@ -38,6 +39,7 @@ export default function App() {
         <Route exact path="/guide" element={<Guide />} />
         <Route exact path="/approve" element={<Approve />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
+        <Route exact path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </Router>
     </div>
