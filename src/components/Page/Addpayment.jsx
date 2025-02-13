@@ -235,9 +235,9 @@ function Addpayment() {
                             <select id="status" name="status" value={formData.status} onChange={handleChange}  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="" >Select Status</option>
                                 <option value="INITIATED">INITIATED</option>
-              <option value="REVIEWED">REVIEWED</option>
+              {/* <option value="REVIEWED">REVIEWED</option> */}
               <option value="APPROVED">APPROVED</option>
-              <option value="PROCESSED">PROCESSED</option>
+              {/* <option value="PROCESSED">PROCESSED</option> */}
 
                             </select>
                         </div>

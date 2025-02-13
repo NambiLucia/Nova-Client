@@ -107,7 +107,7 @@ function Approve() {
                   <tr key={payment.id} className="hover:bg-gray-50">
                     <td className="border px-4 py-2">{index + 1}</td>
                     <td className="border px-4 py-2">{payment.user?.fullname}</td>
-                    <td className="border px-4 py-2">${payment.amountFigures}</td>
+                    <td className="border px-4 py-2">Ugx{payment.amountFigures}</td>
                     <td className="border px-4 py-2">
                       <span
                         className={`px-2 py-1 text-sm rounded ${
