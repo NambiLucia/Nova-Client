@@ -33,7 +33,7 @@ function Alerts() {
         }
 
 
-        const response = await fetch(`http://localhost:3000/api/v1/payments/payment-status/${userId}`,
+        const response = await fetch(`https://nova-server-hk8n.onrender.com/api/v1/payments/payment-status/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include the token in the request headers

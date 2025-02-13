@@ -30,7 +30,7 @@ function Signup() {
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/users/register", values);
+      const response = await axios.post("https://nova-server-hk8n.onrender.com/api/v1/users/register", values);
       console.log("Registration successful:", response.data);
       toast.success("Registration successful! Redirecting to login...");
       resetForm();

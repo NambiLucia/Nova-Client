@@ -28,7 +28,7 @@ function ResetPassword() {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v1/users/reset-password`, 
+        `https://nova-server-hk8n.onrender.com/api/v1/users/reset-password`, 
         {
           resetToken: token, // Using token from URL
           newPassword: values.password,

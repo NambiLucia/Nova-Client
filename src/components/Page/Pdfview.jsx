@@ -15,7 +15,7 @@ function Pdfview() {
         
         // Using fetch instead of axios
         const response = await fetch(
-          `http://localhost:3000/api/v1/payments/single-payment/${paymentId}`
+          `https://nova-server-hk8n.onrender.com/api/v1/payments/single-payment/${paymentId}`
         );
         
         console.log('Response status:', response.status); 

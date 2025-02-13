@@ -54,7 +54,7 @@ function Approve() {
       }
 
       const response = await fetch(
-        `http://localhost:3000/api/v1/payments/approve-payment/${paymentId}`,
+        `https://nova-server-hk8n.onrender.com/api/v1/payments/approve-payment/${paymentId}`,
         {
           method: "PATCH",
           headers: {

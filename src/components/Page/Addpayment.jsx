@@ -107,7 +107,7 @@ function Addpayment() {
       payload.append("document", document);
     }
 
-    const apiUrl = "http://localhost:3000/api/v1/payments/create-payment";
+    const apiUrl = "https://nova-server-hk8n.onrender.com/api/v1/payments/create-payment";
 
     try {
       const response = await fetch(apiUrl, {

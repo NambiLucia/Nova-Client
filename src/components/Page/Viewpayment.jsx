@@ -32,7 +32,7 @@ function Viewpayment() {
     const fetchPayments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/v1/payments/user-payments/${userId}`
+          `https://nova-server-hk8n.onrender.com/api/v1/payments/user-payments/${userId}`
         );
         setList(response.data.payments); 
         console.log("View payment:", response.data.payments);

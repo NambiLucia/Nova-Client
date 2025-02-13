@@ -23,7 +23,7 @@ function ForgotPassword() {
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/users/forgot-password", values);
+      const response = await axios.post("https://nova-server-hk8n.onrender.com/api/v1/users/forgot-password", values);
 
       console.log("Response:", response); 
 

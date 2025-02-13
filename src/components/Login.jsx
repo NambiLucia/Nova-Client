@@ -28,7 +28,7 @@ function Login() {
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/users/login",
+        "https://nova-server-hk8n.onrender.com/api/v1/users/login",
         values
       );
       const { userToken } = response.data;
