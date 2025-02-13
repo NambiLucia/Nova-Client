@@ -24,7 +24,7 @@ function Approve() {
           throw new Error("Authentication token missing. Please log in.");
         }
 
-        const response = await fetch("http://localhost:3000/api/v1/payments", {
+        const response = await fetch("https://nova-server-hk8n.onrender.com/api/v1/payments", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
