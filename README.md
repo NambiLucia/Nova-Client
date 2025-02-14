@@ -55,7 +55,8 @@ Here are some UI previews:
   ![Dashboard](./public/pic4.png)
 - **Payment Initiated**
   ![Initiated](./public/pic5.png)
-
+- **Payment Approved**
+  ![Initiated](./public/pic14.png)
 ## Contributing
 1. Fork the repository.
 2. Create a new branch (`feature-branch`).
