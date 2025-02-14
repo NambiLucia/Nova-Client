@@ -1,4 +1,4 @@
-# Nova Payment manangement system Frontend
+# Nova Payment Manangement System 
 
 ## Overview
 The **Nova Client** is the user interface for the **Nova Payment Management System**, built to provide a seamless and secure experience for managing organizational payments. Designed for **efficiency, accessibility, and automation**, this frontend eliminates paperwork and allows businesses to initiate and approve payments entirely online.
@@ -57,6 +57,9 @@ Here are some UI previews:
   ![Initiated](./public/pic5.png)
 - **Payment Approved**
   ![Initiated](./public/pic14.png)
+- **Payment Status**
+  ![Initiated](./public/pic7.png)
+
 ## Contributing
 1. Fork the repository.
 2. Create a new branch (`feature-branch`).
