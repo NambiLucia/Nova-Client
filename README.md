@@ -1,7 +1,7 @@
 # Nova Payment Manangement System 
 
 ## Overview
-The **Nova Client** is the user interface for the **Nova Payment Management System**, built to provide a seamless and secure experience for managing organizational payments. Designed for **efficiency, accessibility, and automation**, this frontend eliminates paperwork and allows businesses to initiate and approve payments entirely online.
+The **Nova Client** is the user interface for  **Nova Payment Management System**, built to provide a seamless and secure experience for managing organizational accounts payments. Designed for **efficiency, accessibility, and automation**, this frontend eliminates paperwork and allows businesses to initiate and approve payments entirely online.
 
 ## Features
 ✅ **Modern UI/UX** – Intuitive dashboard with real-time transaction tracking.
