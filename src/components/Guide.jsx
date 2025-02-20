@@ -52,10 +52,10 @@ function Guide() {
         {/* Step 2 */}
         <div className="space-y-4">
           <h2 className="text-lg md:text-xl font-semibold text-gray-800 font-Roboto">
-            Step 2: Create a Payment Request
+            Step 2: Create a Payment Voucher
           </h2>
           <p className="text-gray-600 text-sm md:text-base font-Roboto">
-            Go to Add Payments and fill in the payment details, 
+            Go to <span className="italic text-[#3F51B5]">Add Payment</span> and fill in the payment details, 
             including date,amount, payee details etc.
           </p>
         </div>
@@ -66,7 +66,7 @@ function Guide() {
             Step 3: Review and Approve Payments
           </h2>
           <p className="text-gray-600 text-sm md:text-base font-Roboto">
-            Payments initiated and approved will appear in the dashboard.
+            Payment vouchers initiated and approved will appear in the dashboard.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ function Guide() {
             Step 4: Track and Manage Payments
           </h2>
           <p className="text-gray-600 text-sm md:text-base font-Roboto">
-            Monitor payment status in real-time under the Dashboard.
+            Monitor payment voucher status in real-time under the Dashboard.
           </p>
         </div>
 
