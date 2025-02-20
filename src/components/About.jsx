@@ -41,26 +41,69 @@ function About() {
           {/* Scroll Section 2 */}
           <section className="scroll-section">
             <p className="text-base md:text-lg text-gray-700 mb-6 font-Roboto text-left">
-              Nova is a revolutionary system designed to simplify organizational payments by eliminating paperwork. It helps businesses, particularly small organizations, streamline their payment processes, making them more efficient, secure, and effortless. With Nova, you can automate payment tracking, processing, and approval, replacing the cumbersome manual tasks with a seamless digital experience. Say goodbye to paperwork and hello to a smarter way of managing payments!
+           <span className="text-[#3F51B5] text-2xl font-semibold">A Payment Voucher Management System (PVMS) </span> that helps businesses, accounting firms, and organizations streamline the creation, approval, tracking, and reporting of payment vouchers. It ensures transparency, efficiency, and proper record-keeping for financial transactions.
             </p>
           </section>
 
           {/* Scroll Section 3 */}
           <section className="scroll-section">
             <h2 className="text-2xl font-semibold text-[#3F51B5] mb-4 font-Roboto">Key Features</h2>
-            <ul className="list-disc pl-6 text-gray-600 mb-6 font-Roboto text-base md:text-lg text-left">
-              <li>Paperless Transactions: Process payments digitally, eliminating the need for physical paperwork.</li>
-              <li>Simplified Payment Tracking: Easily track payment statuses in real-time.</li>
-              <li>User-Friendly Interface: Intuitive design, no technical experience required.</li>
-              <li>Customizable for Any Organization: Adapts to the needs of any organization, big or small.</li>
-            </ul>
+            <ul className="list-decimal pl-6 text-gray-600 mb-6 font-Roboto text-base md:text-lg text-left space-y-2">
+  <li>
+    <strong className="text-[#3F51B5]">User Authentication & Access Control</strong>
+    <ul className="list-disc pl-6">
+      <li>Role-based access (Initiator, Admin)</li>
+      <li>Secure login</li>
+    </ul>
+  </li>
+  
+  <li>
+    <strong className="text-[#3F51B5]">Voucher Creation & Processing</strong>
+    <ul className="list-disc pl-6">
+      <li>Generate payment vouchers with unique serial numbers</li>
+      <li>Attach supporting documents (invoices, receipts)</li>
+      <li>Automatic numbering and tracking</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong className="text-[#3F51B5]">Approval Workflow</strong>
+    <ul className="list-disc pl-6">
+      <li>Multi-level approval (e.g., Initiator → Admin)</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong className="text-[#3F51B5]">Expense & Budget Tracking</strong>
+    <ul className="list-disc pl-6">
+      <li>Link vouchers to specific budget categories</li>
+      <li>Real-time monitoring of approved and pending payments</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong className="text-[#3F51B5]">Reporting & Auditing</strong>
+    <ul className="list-disc pl-6">
+      <li>View initiated and approved vouchers</li>
+      <li>Export payment vouchers in PDF format</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong className="text-[#3F51B5]">Vendor & Beneficiary Management</strong>
+    <ul className="list-disc pl-6">
+      <li>Maintain a database of vendors and payees</li>
+    </ul>
+  </li>
+</ul>
+
           </section>
 
           {/* Scroll Section 4 */}
           <section className="scroll-section">
             <h2 className="text-2xl font-semibold text-[#3F51B5] mb-4 font-Roboto">Why Choose <span className="text-[#3F51B5] italic font-Bubblegum">Nova</span>?</h2>
             <p className="text-base md:text-lg text-gray-600 mb-6 font-Roboto text-left">
-              Nova is perfect for small organizations looking to modernize their payment processes. It increases efficiency by automating tasks, reduces costs by eliminating paperwork, and improves accuracy with secure, transparent transactions.
+            Nova is the ideal solution for businesses, accounting firms, and organizations aiming to modernize their payment voucher processes. By automating tasks,<span className="text-[#3F51B5]">it reduces manual errors and paperwork, enhances financial transparency and accountability, and improves efficiency with automated approvals.</span>  With <span className="text-[#3F51B5]">real-time insights into company expenses and strong compliance with financial regulations.</span> Nova ensures secure, accurate, and streamlined transactions—helping you manage payments effortlessly.
             </p>
           </section>
 
