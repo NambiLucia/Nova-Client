@@ -44,14 +44,13 @@ function Hero() {
         <div className="text-center md:text-left space-y-8 leading-loose mt-16">
           <h1 className="text-3xl md:text-5xl font-bold font-Roboto leading-relaxed tracking-wide">
             <span className="text-[#3F51B5] italic font-Bubblegum">NOVA</span>{" "}
-            Payment Management System
+            Payment Voucher Management System
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold font-Bubblegum italic text-[#3F51B5] tracking-wide">
-            Pay Anywhere, Anytime.
+          <h2 className="text-2xl md:text-3xl font-semibold font-Bubblegum italic text-[#3F51B5] tracking-wide text-center">
+          Create Payment Vouchers Anytime, Anywhere!
           </h2>
           <p className="text-lg md:text-xl font-Roboto tracking-wide">
-            Experience the future of payments: seamless, secure, and paperless
-            transactions.
+          	Experience the future of payment vouchers: Seamless, secure, smart and paperless 
           </p>
           <div className="flex justify-center items-center">
             <Link to="/login">
@@ -76,27 +75,26 @@ function Hero() {
         </div>
       </motion.div>
 
-      {/* Second Section */}
-      <div className="container mx-auto px-8 lg:px-20 max-w-screen-xl flex flex-col md:flex-row items-center gap-16 text-center md:text-left mt-24">
-        <motion.img
-          src="/undraw_online-payments_p97e.svg"
-          alt="Online Payments"
-          className="w-full max-w-md md:max-w-lg"
-          
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        />
-        <div className="space-y-6 max-w-md">
-          <h2 className="text-2xl md:text-3xl font-semibold font-Bubblegum italic text-[#3F51B5] tracking-wide">
-            Secure & Fast Transactions
-          </h2>
-          <p className="text-lg md:text-xl font-Roboto tracking-wide">
-            Our platform ensures that your payments are processed quickly and securely,
-            allowing you to focus on what matters most.
-          </p>
-        </div>
-      </div>
+    {/* Second Section */}
+<div className="container mx-auto px-8 lg:px-20 max-w-screen-xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-40 items-center mt-24">
+  <motion.img
+    src="/undraw_done-checking_ra6c.svg"
+    alt="Secure Payments"
+    className="w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto"
+    initial={{ scale: 0.8, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
+  />
+  <div className="space-y-6 max-w-md">
+    <h2 className="text-2xl md:text-3xl font-semibold font-Bubblegum italic text-[#3F51B5] tracking-wide text-center">
+      Seamless, Secure, and Smart Transactions
+    </h2>
+    <p className="text-lg md:text-xl font-Roboto tracking-wider ">
+      Our platform boosts accountability by streamlining payments, enhancing efficiency, keeping accurate records, minimizing manual errors, and eliminating paperwork.
+    </p>
+  </div>
+</div>
+
 
       {/* Final Image Section */}
       <div className="container mx-auto px-8 lg:px-20 max-w-screen-xl text-center mt-24 pb-20">
@@ -112,7 +110,7 @@ function Hero() {
           Your Security, Our Priority
         </h2>
         <p className="text-lg md:text-xl font-Roboto tracking-wide mt-4">
-          We prioritize data protection, ensuring your transactions are safe.
+          We prioritize data protection, ensuring your payment vouchers are safe.
         </p>
       </div>
     </div>
