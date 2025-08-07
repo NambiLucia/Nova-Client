@@ -6,28 +6,43 @@ import { motion } from "framer-motion";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Guide", path: "/guide" },
+  ];
+
   return (
-    <nav className="bg-[#333333] text-[#f5f5f5] shadow-md">
+    <nav className="bg-gradient-to-r from-[#2C3E50] to-[#34495E] text-white shadow-lg fixed w-full z-50">
       <div className="container mx-auto px-8 lg:px-20 py-4 flex items-center justify-between">
         
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <span className="text-3xl font-bold italic font-Bubblegum text-[#3F51B5]">
+          <span className="text-3xl font-bold tracking-wide font-sans text-[#00B8D9] hover:text-[#00D4FF] transition-colors duration-300">
             <Link to="/">Nova</Link>
           </span>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 text-lg font-Roboto">
-          <Link to="/" className="hover:underline text-[#f5f5f5]">Home</Link>
-          <Link to="/about" className="hover:underline text-[#f5f5f5]">About</Link>
-          <Link to="/guide" className="hover:underline text-[#f5f5f5]">Guide</Link>
+        <div className="hidden md:flex space-x-10 text-lg font-medium">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className="relative group"
+            >
+              <span className="transition-colors duration-300 hover:text-[#00D4FF]">
+                {item.name}
+              </span>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#00D4FF] transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          ))}
         </div>
 
         {/* Login Button */}
-        <div className="hidden md:flex space-x-4 font-Roboto">
+        <div className="hidden md:flex">
           <Link to="/login">
-            <button className="bg-[#3F51B5] text-[#f5f5f5] px-4 py-2 rounded-md font-semibold hover:bg-[#303F9F]">
+            <button className="bg-[#00B8D9] hover:bg-[#00D4FF] px-5 py-2 rounded-lg font-semibold shadow-md transition-all duration-300">
               Login
             </button>
           </Link>
@@ -35,7 +50,7 @@ function NavBar() {
 
         {/* Mobile Hamburger Menu Button */}
         <button
-          className="md:hidden text-3xl focus:outline-none text-[#f5f5f5]"
+          className="md:hidden text-3xl focus:outline-none transition-all duration-300 transform hover:scale-110 hover:text-[#00D4FF] hover:drop-shadow-[0_0_6px_#00D4FF]"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -48,12 +63,18 @@ function NavBar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-[#333333] text-center py-4 space-y-4 font-Roboto"
+          className="md:hidden bg-[#2C3E50] text-center py-6 space-y-6 shadow-lg"
         >
-          <Link to="/" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/about" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>About</Link>
-          <Link to="/guide" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Guide</Link>
-          <Link to="/login" className="block py-2 hover:underline text-[#f5f5f5]" onClick={() => setIsOpen(false)}>Login</Link>
+          {navItems.concat({ name: "Login", path: "/login" }).map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className="block text-lg font-medium transition-colors duration-300 hover:text-[#00D4FF]"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
         </motion.div>
       )}
     </nav>
