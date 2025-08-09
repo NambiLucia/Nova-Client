@@ -122,7 +122,7 @@ function About() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-transform duration-300 transform hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <h3 className="text-lg font-bold text-[#1E3A8A] mb-3">
                   {feature.title}
