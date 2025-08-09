@@ -1,128 +1,144 @@
 import NavBar from "./Nav";
 import Footer from "./Footer";
 import { motion, useSpring, useScroll } from "framer-motion";
+import { FaBullseye, FaChartLine, FaFileInvoiceDollar } from "react-icons/fa";
 
 function About() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-    });
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
-        {/* Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
-        id="scroll-indicator"
         style={{
           scaleX,
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          height: 10,
+          height: 6,
           originX: 0,
-          backgroundColor: "#3F51B5",
+          backgroundColor: "#1E3A8A",
           zIndex: 1000,
         }}
       />
+
       <NavBar />
-      
-      <div className="flex-grow p-4 md:p-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Scroll Section 1 */}
-          <section className="scroll-section">
-            <h1 className="text-3xl md:text-4xl font-semibold text-[#3F51B5] mb-6 font-Roboto">
-              Welcome to <span className="text-[#3F51B5] italic font-Bubblegum">Nova</span>
-            </h1>
-          </section>
-          
-          {/* Scroll Section 2 */}
-          <section className="scroll-section">
-            <p className="text-base md:text-lg text-gray-700 mb-6 font-Roboto text-left">
-           <span className="text-[#3F51B5] text-2xl font-semibold">A Payment Voucher Management System (PVMS) </span> that helps businesses, accounting firms, and organizations streamline the creation, approval, tracking, and reporting of payment vouchers. It ensures transparency, efficiency, and proper record-keeping for financial transactions.
-            </p>
-          </section>
 
-          {/* Scroll Section 3 */}
-          <section className="scroll-section">
-            <h2 className="text-2xl font-semibold text-[#3F51B5] mb-4 font-Roboto">Key Features</h2>
-            <ul className="list-decimal pl-6 text-gray-600 mb-6 font-Roboto text-base md:text-lg text-left space-y-2">
-  <li>
-    <strong className="text-[#3F51B5]">User Authentication & Access Control</strong>
-    <ul className="list-disc pl-6">
-      <li>Role-based access (Initiator, Admin)</li>
-      <li>Secure login</li>
-    </ul>
-  </li>
-  
-  <li>
-    <strong className="text-[#3F51B5]">Voucher Creation & Processing</strong>
-    <ul className="list-disc pl-6">
-      <li>Generate payment vouchers with unique serial numbers</li>
-      <li>Attach supporting documents (invoices, receipts)</li>
-      <li>Automatic numbering and tracking</li>
-    </ul>
-  </li>
+      {/* Added spacing between NavBar and content */}
+      <div className="py-10" />
 
-  <li>
-    <strong className="text-[#3F51B5]">Approval Workflow</strong>
-    <ul className="list-disc pl-6">
-      <li>Multi-level approval (e.g., Initiator → Admin)</li>
-    </ul>
-  </li>
-
-  <li>
-    <strong className="text-[#3F51B5]">Expense & Budget Tracking</strong>
-    <ul className="list-disc pl-6">
-      <li>Link vouchers to specific budget categories</li>
-      <li>Real-time monitoring of approved and pending payments</li>
-    </ul>
-  </li>
-
-  <li>
-    <strong className="text-[#3F51B5]">Reporting & Auditing</strong>
-    <ul className="list-disc pl-6">
-      <li>View initiated and approved vouchers</li>
-      <li>Export payment vouchers in PDF format</li>
-    </ul>
-  </li>
-
-  <li>
-    <strong className="text-[#3F51B5]">Vendor & Beneficiary Management</strong>
-    <ul className="list-disc pl-6">
-      <li>Maintain a database of vendors and payees</li>
-    </ul>
-  </li>
-</ul>
-
+      <div className="flex-grow p-6 md:p-10">
+        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Why Choose Nova */}
+          <section className="bg-white rounded-xl shadow-md p-8 flex flex-col md:flex-row items-center gap-8">
+            <FaChartLine className="text-[#1E3A8A] text-5xl" />
+            <div>
+              <h2 className="text-2xl font-bold text-[#1E3A8A] mb-3">
+                Why Choose Nova?
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Nova streamlines your payment voucher process with automation,
+                transparency, and security. Reduce manual errors, cut
+                paperwork, and access real-time financial data from anywhere.
+                Designed for businesses, accountants, and finance teams seeking
+                efficiency without complexity.
+              </p>
+            </div>
           </section>
 
-          {/* Scroll Section 4 */}
-          <section className="scroll-section">
-            <h2 className="text-2xl font-semibold text-[#3F51B5] mb-4 font-Roboto">Why Choose <span className="text-[#3F51B5] italic font-Bubblegum">Nova</span>?</h2>
-            <p className="text-base md:text-lg text-gray-600 mb-6 font-Roboto text-left">
-            Nova is the ideal solution for businesses, accounting firms, and organizations aiming to modernize their payment voucher processes. By automating tasks,<span className="text-[#3F51B5]">it reduces manual errors and paperwork, enhances financial transparency and accountability, and improves efficiency with automated approvals.</span>  With <span className="text-[#3F51B5]">real-time insights into company expenses and strong compliance with financial regulations.</span> Nova ensures secure, accurate, and streamlined transactions—helping you manage payments effortlessly.
-            </p>
+          {/* Our Vision */}
+          <section className="bg-white rounded-xl shadow-md p-8 flex flex-col md:flex-row items-center gap-8">
+            <FaBullseye className="text-[#1E3A8A] text-5xl" />
+            <div>
+              <h2 className="text-2xl font-bold text-[#1E3A8A] mb-3">
+                Our Vision
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                To empower organizations — big or small — to operate with
+                enterprise-level efficiency. Nova eliminates paperwork,
+                simplifies financial workflows, and ensures your payment process
+                is ready for the digital future.
+              </p>
+            </div>
           </section>
 
-          {/* Scroll Section 5 */}
-          <section className="scroll-section">
-            <h2 className="text-2xl font-semibold text-[#3F51B5] mb-4 font-Roboto">Our Vision</h2>
-            <p className="text-base md:text-lg text-gray-600 mb-6 font-Roboto text-left">
-              Nova aims to empower small organizations to operate with the efficiency of large enterprises, simplifying operations and helping businesses grow in a digital world, all while eliminating the need for excessive paperwork.
-            </p>
+          {/* Nova Payment Overview */}
+          <section className="bg-white rounded-xl shadow-md p-8 flex flex-col md:flex-row items-center gap-8">
+            <FaFileInvoiceDollar className="text-[#1E3A8A] text-5xl" />
+            <div>
+              <h2 className="text-2xl font-bold text-[#1E3A8A] mb-3">
+                Nova Payment Voucher Management
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Nova is a secure, cloud-based platform for creating, approving,
+                tracking, and reporting payment vouchers. It ensures accuracy,
+                compliance, and a clear audit trail while providing powerful
+                insights into your company’s financial activities.
+              </p>
+            </div>
           </section>
-
         </div>
+
+        {/* Key Features */}
+        <section className="mt-16">
+          <h2 className="text-3xl font-semibold text-[#1E3A8A] mb-8 text-center">
+            Key Features
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "User Authentication & Access Control",
+                points: ["Role-based access", "Secure login"],
+              },
+              {
+                title: "Voucher Creation & Processing",
+                points: [
+                  "Unique serial numbers",
+                  "Attach invoices & receipts",
+                ],
+              },
+              {
+                title: "Approval Workflow",
+                points: ["Multi-level approvals"],
+              },
+              {
+                title: "Expense & Budget Tracking",
+                points: ["Real-time monitoring", "Budget category linking"],
+              },
+              {
+                title: "Reporting & Auditing",
+                points: ["Track all vouchers", "Export to PDF"],
+              },
+              {
+                title: "Vendor Management",
+                points: ["Maintain vendor database"],
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-lg font-bold text-[#1E3A8A] mb-3">
+                  {feature.title}
+                </h3>
+                <ul className="list-disc pl-5 text-gray-600 space-y-1">
+                  {feature.points.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       <Footer />
-
-      
-
-    
     </div>
   );
 }
