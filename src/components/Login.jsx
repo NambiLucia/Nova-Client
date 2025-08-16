@@ -16,10 +16,10 @@ const initialValues = {
 const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email format")
-    .required("Email is Required"),
+    .required("Email is required"),
   password: Yup.string()
     .min(3, "Must be at least 3 characters long")
-    .required("Password is Required"),
+    .required("Password is required"),
 });
 
 function Login() {
@@ -34,17 +34,15 @@ function Login() {
       const { userToken } = response.data;
       const decodedUserToken = jwtDecode(userToken);
 
-      console.log("Decoded User:", decodedUserToken);
-
       localStorage.setItem("userToken", userToken);
       localStorage.setItem("userDetails", JSON.stringify(decodedUserToken));
 
-      toast.success("Login successful! Redirecting to Dashboard...");
+      toast.success("✅ Login successful! Redirecting...");
       resetForm();
-      setTimeout(() => navigate("/addpayment"), 1000);
+      setTimeout(() => navigate("/addpayment"), 1500);
     } catch (error) {
       console.error("Error Logging in:", error.response?.data || error.message);
-      toast.error("Error logging in");
+      toast.error("❌ Invalid email or password");
     } finally {
       setSubmitting(false);
     }
@@ -54,95 +52,112 @@ function Login() {
     <>
       <NavBar />
 
-      {/* Background Styling */}
-      <section className="flex justify-center items-center min-h-screen bg-[#F3F4F6] p-6">
-        <Formik
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          validationSchema={validationSchema}
-        >
-          {() => (
-            <Form className="w-full max-w-md p-6 bg-white shadow-2xl rounded-lg">
-              <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
-                Login
-              </h2>
+      <section className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-gray-50 to-gray-200">
+        {/* Left Side: Marketing Content */}
+        <div className="hidden md:flex w-1/2 flex-col justify-center items-start px-12 bg-[#3F51B5] text-white">
+          <h1 className="text-4xl font-extrabold mb-4 leading-snug">
+            Join <span className="text-yellow-300">Nova</span>
+          </h1>
+          <p className="text-lg leading-relaxed text-gray-100 max-w-md">
+            Create your account in minutes and start streamlining your financial workflows with 
+            <span className="font-semibold"> secure</span>, 
+            <span className="font-semibold"> smart</span> payment management.
+          </p>
+        </div>
 
-              {/* Email Field */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-2 mt-2"
-                >
-                  Email
-                </label>
-                <Field
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-red-500 text-sm mt-1"
-                />
-              </div>
+        {/* Right Side: Login Form */}
+        <div className="flex w-full md:w-1/2 justify-center items-center p-8">
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+          >
+            {() => (
+              <Form className="w-full max-w-md p-8 bg-white shadow-2xl rounded-2xl border border-gray-100">
+                <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">
+                  Welcome Back 👋
+                </h2>
+                <p className="text-center text-gray-500 mb-6 text-sm">
+                  Please log in to continue
+                </p>
 
-              {/* Password Field */}
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 mb-2 mt-2"
-                >
-                  Password
-                </label>
-                <Field
-                  id="password"
-                  type="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="text-red-500 text-sm mt-1"
-                />
-              </div>
+                {/* Email Field */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Email Address
+                  </label>
+                  <Field
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="block w-full rounded-lg border border-gray-300 shadow-sm py-2.5 px-3 text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
 
-              {/* Login Button */}
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full bg-[#3F51B5] text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition"
-                >
-                  Login
-                </button>
-              </div>
+                {/* Password Field */}
+                <div className="mt-4">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Password
+                  </label>
+                  <Field
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    className="block w-full rounded-lg border border-gray-300 shadow-sm py-2.5 px-3 text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
 
-              {/* Forgot Password & Sign Up Links */}
-              <div className="text-center text-sm mt-4 text-gray-600">
-                <Link
-                  to="/forgot-password"
-                  className="text-[#3F51B5] hover:underline"
-                >
-                  Forgot Password?
-                </Link>
-              </div>
+                {/* Login Button */}
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    className="w-full bg-[#3F51B5] text-white py-2.5 px-4 rounded-lg shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition"
+                  >
+                    Login
+                  </button>
+                </div>
 
-              <p className="text-center text-gray-600 text-sm mt-2">
-                No account?{" "}
-                <Link
-                  to="/register"
-                  className="text-[#3F51B5] hover:underline"
-                >
-                  Sign up here
-                </Link>
-              </p>
-            </Form>
-          )}
-        </Formik>
+                {/* Forgot Password & Sign Up Links */}
+                <div className="text-center text-sm mt-5 text-gray-600">
+                  <Link
+                    to="/forgot-password"
+                    className="text-[#3F51B5] hover:underline font-medium"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
+
+                <p className="text-center text-gray-600 text-sm mt-3">
+                  Don’t have an account?{" "}
+                  <Link
+                    to="/register"
+                    className="text-[#3F51B5] hover:underline font-medium"
+                  >
+                    Sign up here
+                  </Link>
+                </p>
+              </Form>
+            )}
+          </Formik>
+        </div>
         <ToastContainer />
       </section>
 
