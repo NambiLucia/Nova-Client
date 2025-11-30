@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { motion, useSpring, useScroll } from "framer-motion";
 import {
   FaUserPlus,
-  FaFileInvoice,
+  FaFileInvoiceDollar,
   FaCheckCircle,
-  FaChartBar,
+  FaChartLine,
 } from "react-icons/fa";
 
 function Guide() {
@@ -18,121 +18,128 @@ function Guide() {
   });
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
-  // Step color themes
   const steps = [
     {
       title: "Step 1: Register Your Account",
-      desc: "Sign up on Nova by providing your full name, email, password, and role to access the platform.",
+      desc: "Sign up on Nova with your full name, email, password, and role to access the platform.",
       icon: <FaUserPlus />,
-      color: "blue",
+      color: "emerald",
     },
     {
       title: "Step 2: Create a Payment Voucher",
-      desc: "Navigate to Add Payment and fill in payment details such as date, amount, and payee information.",
-      icon: <FaFileInvoice />,
-      color: "green",
+      desc: "Navigate to Add Payment and fill in details such as date, amount, and payee information.",
+      icon: <FaFileInvoiceDollar />,
+      color: "teal",
     },
     {
       title: "Step 3: Review & Approve Payments",
-      desc: "Once submitted, vouchers move through approval workflows and can be reviewed directly from the dashboard.",
+      desc: "Once submitted, vouchers move through approval workflows and can be reviewed directly from your dashboard.",
       icon: <FaCheckCircle />,
-      color: "purple",
+      color: "cyan",
     },
     {
       title: "Step 4: Track & Manage Payments",
-      desc: "Monitor payment voucher statuses in real time under the dashboard, ensuring full visibility and control.",
-      icon: <FaChartBar />,
-      color: "orange",
+      desc: "Monitor voucher statuses in real time under the dashboard, ensuring full visibility and control.",
+      icon: <FaChartLine />,
+      color: "lime",
     },
   ];
 
-  // Tailwind color mapping
   const colorMap = {
-    blue: "bg-blue-50 text-blue-700 border-blue-300",
-    green: "bg-green-50 text-green-700 border-green-300",
-    purple: "bg-purple-50 text-purple-700 border-purple-300",
-    orange: "bg-orange-50 text-orange-700 border-orange-300",
+    emerald: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    teal: "bg-teal-50 text-teal-700 border-teal-200",
+    cyan: "bg-cyan-50 text-cyan-700 border-cyan-200",
+    lime: "bg-lime-50 text-lime-700 border-lime-200",
   };
 
   const iconColorMap = {
-    blue: "text-blue-600",
-    green: "text-green-600",
-    purple: "text-purple-600",
-    orange: "text-orange-600",
+    emerald: "text-emerald-600",
+    teal: "text-teal-600",
+    cyan: "text-cyan-600",
+    lime: "text-lime-600",
   };
 
   return (
-    <>
+    <div className="bg-gradient-to-br from-slate-50 via-white to-gray-50 min-h-screen flex flex-col">
       {/* Scroll Progress Indicator */}
       <motion.div
-        id="scroll-indicator"
         style={{
           scaleX,
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          height: 6,
+          height: 4,
           originX: 0,
-          backgroundColor: "#3F51B5",
+          background: "linear-gradient(90deg, #10b981 0%, #059669 100%)",
           zIndex: 1000,
         }}
       />
 
       <NavBar />
 
-      <div className="bg-gray-50 min-h-screen p-6 md:p-12">
+      <div className="flex-grow px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
-          className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 md:p-12 space-y-10"
+          className="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl p-8 md:p-12 space-y-12"
           initial="hidden"
-          animate="visible"
-          transition={{ staggerChildren: 0.2 }}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         >
           {/* Title */}
           <motion.h1
-            className="text-3xl md:text-4xl font-extrabold text-[#3F51B5] text-center"
+            className="text-3xl md:text-4xl font-extrabold text-slate-900 text-center"
             variants={fadeInUp}
           >
             Quick Start Guide:{" "}
-            <span className="italic font-semibold text-gray-800">Nova</span>
+            <span className="text-emerald-600 italic font-semibold">Nova</span>
           </motion.h1>
 
           {/* Steps */}
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className={`flex items-start gap-4 p-5 rounded-xl shadow-sm border ${colorMap[step.color]} hover:shadow-md transition`}
-              variants={fadeInUp}
-            >
-              <div className={`text-3xl mt-1 ${iconColorMap[step.color]}`}>
-                {step.icon}
-              </div>
-              <div>
-                <h2 className="text-lg md:text-xl font-semibold">
-                  {step.title}
-                </h2>
-                <p className="text-sm md:text-base">{step.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+          <div className="space-y-6">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                className={`flex items-start gap-5 p-6 md:p-8 rounded-2xl shadow-lg border ${colorMap[step.color]} hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300`}
+                variants={fadeInUp}
+              >
+                <div
+                  className={`text-4xl md:text-5xl mt-1 flex-shrink-0 ${iconColorMap[step.color]}`}
+                >
+                  {step.icon}
+                </div>
+                <div>
+                  <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-1">
+                    {step.title}
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
           {/* Call to action */}
-          <motion.div className="text-center" variants={fadeInUp}>
+          <motion.div className="text-center mt-6" variants={fadeInUp}>
             <Link to="/login">
-              <button className="bg-[#3F51B5] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-md hover:bg-[#334296] hover:scale-[1.03] transition-all">
+              <button className="bg-emerald-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl hover:bg-emerald-500 hover:scale-[1.03] transition-all duration-300">
                 Get Started Now
               </button>
             </Link>
+            <p className="text-sm text-slate-500 mt-3">
+              No credit card required • 14-day free trial
+            </p>
           </motion.div>
         </motion.div>
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
